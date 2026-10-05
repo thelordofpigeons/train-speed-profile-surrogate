@@ -1,0 +1,26 @@
+# Synthetic configuration for scripts/train_synthetic.py (CPU, no dataset needed).
+# Reduced conditioning: no track features, no station ids.
+seed: 42
+
+data:
+  n_train: 2000
+  n_val: 200
+  num_points: 100
+  dist_range: [500.0, 10000.0]
+
+model:
+  hidden_dim: 64
+  num_blocks: 4
+  num_freqs: 16
+  freq_base: 10.0
+  num_stations: 100
+  emb_dim: "auto"
+
+training:
+  steps: 500
+  batch_size: 64
+  lr: 1.0e-3
+  weight_decay: 1.0e-4
+  grad_clip_norm: 1.0
+  lambda_smooth: 0.0
+  log_every: 50

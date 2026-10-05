@@ -1,0 +1,38 @@
+
+experiment:
+  name: "h5_v3_hybrid_base"
+  seed: 42
+  device: "cuda"
+
+data:
+  h5_path: "data/dataset.h5"
+  mode: "point"
+  points_per_traj: 128
+  batch_size: 128
+  num_workers: 4
+  force_endpoints_prob: 0.3
+
+model:
+  hidden_dim: 256
+  num_blocks: 8
+  num_freqs: 48
+  freq_base: 1000.0
+  param_dim: 10
+
+training:
+  epochs: 150
+  lr: 0.0005
+  weight_decay: 1.0e-4
+  lambda_neg: 0.1
+  
+  # V3 Hybrid Config
+  traj_batches_per_epoch: 10
+  traj_batch_size: 8
+  traj_originals_only: true
+  
+  # Auxiliary Losses (Disabled for Base)
+  lambda_peak: 0.0
+  lambda_curv: 0.0
+  use_cruise_weighting: false
+  alpha_cruise: 1.0
+  accel_proxy: "dvdt"

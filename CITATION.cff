@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the project report it accompanies."
+title: "AI-Based Energy-Optimal Train Speed Profile Generation Using Neural Surrogate Modeling for Real-Time Railway Systems"
+type: software
+authors:
+  - family-names: "Karcha"
+    given-names: "Mohamed Amine"
+license: MIT
+repository-code: "https://github.com/thelordofpigeons/train-speed-profile-surrogate"
+date-released: 2026-10-05
+abstract: >-
+  A PyTorch neural surrogate that predicts energy-optimal train speed
+  profiles in milliseconds instead of the seconds to minutes needed by
+  optimal control solvers. The network uses positional encoding, modulated
+  residual blocks, track-feature conditioning, hard boundary-condition
+  enforcement and physics-informed losses. The training dataset is
+  confidential and is not included.
+keywords:
+  - railway
+  - energy-optimal train control
+  - neural surrogate
+  - physics-informed learning
+  - speed profile

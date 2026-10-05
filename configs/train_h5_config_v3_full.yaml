@@ -1,0 +1,52 @@
+
+experiment:
+  name: "h5_v3_full_training"
+  seed: 42
+  device: "cuda"
+
+data:
+  h5_path: "data/dataset.h5"
+  splits_dir: "data/splits"
+  mode: "point"
+  points_per_traj: 128
+  batch_size: 1024
+  num_workers: 8   # set to 0 if dataloader workers fail on Windows
+  force_endpoints_prob: 0.3
+  use_track_feats: true
+
+model:
+  hidden_dim: 512
+  num_blocks: 8
+  num_freqs: 16
+  freq_base: 10
+  param_dim: 8
+  track_feat_dim: 3
+  extra_features_dim: 2
+
+training:
+  epochs: 200
+  batch_size: 1024
+  traj_batch_size: 128
+  lr: 1.0e-4
+  weight_decay: 1.0e-5
+  early_stopping_patience: 15
+  early_stopping_min_delta: 0.005
+  optimizer: "adamw"
+  scheduler:
+    type: "cosine"
+    T_max: 20
+  
+  # Hybrid
+  traj_batches_per_epoch: 128   # IMPROVED: More trajectory supervision
+  traj_originals_only: true
+  
+  # Loss Weights (V3)
+  lambda_peak: 0.1
+  lambda_curv: 0.05        # INCREASED (was 0.0 or 1e-6)
+  lambda_acc: 0.05
+  lambda_speed_limit: 1.0      # NEW
+  lambda_nonneg: 0.5           # NEW
+  
+  use_cruise_weighting: true
+  alpha_cruise: 2.0
+  accel_proxy: 'vdvdx'

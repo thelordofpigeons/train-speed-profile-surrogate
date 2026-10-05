@@ -1,0 +1,66 @@
+experiment:
+  name: "v4_full"
+  seed: 42
+  device: "cuda"
+
+data:
+  h5_path: "data/dataset.h5"
+  splits_dir: "data/splits"
+  use_track_feats: true
+  use_new_p_schema: true
+  use_station_embeddings: true
+  use_track_event_features: true
+  event_horizon: 0.4
+  event_grid_steps: 33
+  points_per_traj: 128
+  force_endpoints_prob: 0.5
+  batch_size: 256
+  num_workers: 8
+  pin_memory: true
+
+model:
+  param_dim: 6
+  emb_dim: "auto"
+  num_freqs: 16
+  freq_base: 10
+  hidden_dim: 256
+  num_blocks: 8
+  track_feat_dim: 26
+
+training:
+  epochs: 200
+  lr: 0.0003
+  weight_decay: 1e-4
+  early_stopping_patience: 20
+  use_amp: true
+  
+  # Trajectory Interleaved Training
+  traj_batches_per_epoch: 50
+  traj_batch_size: 16
+  
+  # Loss Annealing
+  warmup_epochs: 50
+  ramp_epochs: 50        # Smoothly introduce physics over first 50 epochs
+  
+  # Loss Weights
+  lambda_peak: 1.0
+  lambda_curv: 1000.0    # Curvature Penalty (standardized to 1e3)
+  lambda_speed_limit: 5.0 # Increased for safety
+  lambda_acc: 0.5
+  lambda_nonneg: 10.0    # Critical: No negative speeds
+  lambda_energy: 0.5     # Increased from test (0.1)
+  lambda_power: 0.5      # Increased from test (0.1)
+  lambda_pmp: 0.05       # Increased from test (0.01)
+  
+  # Physics Parameters (Verified in Phase 7)
+  DX_MIN_M: 1e-3
+  DX_MAX_M: 500.0
+  power_A: 200.0
+  power_B: 5.0
+  power_C: 0.1
+  power_M: 4e5
+  power_mode: "log1p"
+  
+  use_cruise_weighting: true
+  alpha_cruise: 0.5
+  accel_proxy: "vdvdx"

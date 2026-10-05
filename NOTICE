@@ -1,0 +1,35 @@
+Train Speed Profile Surrogate
+Copyright (c) 2026 Mohamed Amine Karcha
+
+The source code in this repository is released under the MIT License (see
+LICENSE). The license covers the code and documentation only.
+
+Dataset not included
+--------------------
+The model was developed and evaluated on a dataset of energy-optimal
+trajectories that is covered by a non-disclosure agreement. That dataset is
+confidential and is not distributed with this repository. No trajectories,
+track profiles, train/validation split files, normalisation statistics,
+trained model checkpoints or figures rendered from the dataset are included,
+and none may be added to this repository. The license above grants no rights
+over the dataset.
+
+Origin of the results
+---------------------
+The aggregate results quoted in the README and in docs/ (mean RMSE 0.20 m/s,
+peak velocity error 0.26 m/s, inference time under 10 ms on a CPU) are taken
+from the author's project report. They were measured on the confidential
+dataset and cannot be reproduced from this repository alone.
+
+Context
+-------
+The work was carried out in a project with the LAMIH laboratory of the
+Universite Polytechnique Hauts-de-France (UPHF). No industrial partner is
+named, and nothing in this repository should be read as an endorsement by,
+or a statement on behalf of, the laboratory, the university or any
+industrial party.
+
+Intended use
+------------
+The software is research code for decision support. It is not a certified
+or safety-critical train control component.

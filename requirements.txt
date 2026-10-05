@@ -1,0 +1,12 @@
+torch>=2.0.0
+numpy
+pandas
+pyyaml
+tqdm
+h5py
+scipy
+matplotlib
+tabulate
+pytest
+# Optional: PDF report generation (src/speed_profile_generator/reporting/generate_pdf.py)
+# reportlab

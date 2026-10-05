@@ -1,0 +1,43 @@
+# Environments and caches
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+
+# Training outputs and logs
+runs/
+logs/
+*.log
+wandb/
+
+# Proprietary dataset and anything derived from it (NDA): never commit
+/data/
+artifacts/
+station_id_map_*.json
+*_split.json
+norm_stats.json
+track_stats.json
+*.h5
+*.hdf5
+*.mat
+*.csv
+*.npy
+*.npz
+*.pt
+*.pth
+*.ckpt
+*.pkl
+
+# Rendered media (may contain real trajectories)
+*.mp4
+*.png
+*.gif
+*.pdf
+demo_outputs/
+
+# Webapp build output (built from source) and node modules
+node_modules/
+src/speed_profile_generator/webapp/static/
+
+# Split lists written next to code by training runs (contain real trajectory ids)
+splits/

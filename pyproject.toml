@@ -1,0 +1,8 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+# "src" for the package, "." so that the top-level demo/ package is importable.
+pythonpath = ["src", "."]
+testpaths = ["tests"]
