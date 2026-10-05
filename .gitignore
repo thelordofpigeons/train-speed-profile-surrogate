@@ -31,6 +31,8 @@ track_stats.json
 # Rendered media (may contain real trajectories)
 *.mp4
 *.png
+# One figure rendered from the synthetic generator only (no real data)
+!docs/img/synthetic-example.png
 *.gif
 *.pdf
 demo_outputs/
